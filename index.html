@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Tools Stencils for Presentations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .instructions {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: white;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            font-weight: bold;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .tool-stencil {
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            border: 2px solid #95a5a6;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-stencil:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .tool-acronym {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .tool-name {
+            font-size: 0.85em;
+            color: #34495e;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        .color-picker {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .team-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .team-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .team-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            border: 2px solid #333;
+        }
+        
+        .controls {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        .preset-colors {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .preset-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #333;
+            transition: transform 0.2s ease;
+        }
+        
+        .preset-color:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            .tool-stencil {
+                padding: 10px;
+                min-height: 70px;
+            }
+            
+            .tool-acronym {
+                font-size: 1.2em;
+            }
+            
+            .tool-name {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Security Tools Stencils</h1>
+        <p class="subtitle">Interactive presentation elements with customizable team colors</p>
+        
+        <div class="instructions">
+            <h3>How to Use:</h3>
+            <ul>
+                <li><strong>Click the color picker</strong> (circle) on any tool to change its background color</li>
+                <li><strong>Use preset colors</strong> below to quickly assign team colors</li>
+                <li><strong>Right-click and save</strong> individual stencils as images for your presentations</li>
+                <li><strong>Copy and paste</strong> stencils directly into PowerPoint, Figma, or other tools</li>
+            </ul>
+        </div>
+        
+        <div class="controls">
+            <div class="preset-colors">
+                <div class="preset-color" style="background: #e74c3c;" onclick="setSelectedColor('#e74c3c')" title="Red Team"></div>
+                <div class="preset-color" style="background: #3498db;" onclick="setSelectedColor('#3498db')" title="Blue Team"></div>
+                <div class="preset-color" style="background: #2ecc71;" onclick="setSelectedColor('#2ecc71')" title="Green Team"></div>
+                <div class="preset-color" style="background: #f39c12;" onclick="setSelectedColor('#f39c12')" title="Orange Team"></div>
+                <div class="preset-color" style="background: #9b59b6;" onclick="setSelectedColor('#9b59b6')" title="Purple Team"></div>
+                <div class="preset-color" style="background: #1abc9c;" onclick="setSelectedColor('#1abc9c')" title="Teal Team"></div>
+                <div class="preset-color" style="background: #34495e;" onclick="setSelectedColor('#34495e')" title="Dark Team"></div>
+                <div class="preset-color" style="background: #95a5a6;" onclick="setSelectedColor('#95a5a6')" title="Gray Team"></div>
+            </div>
+            <button class="btn" onclick="resetAllColors()">Reset All Colors</button>
+            <button class="btn" onclick="exportConfiguration()">Export Configuration</button>
+        </div>
+
+        <!-- Core Security Infrastructure -->
+        <div class="category">
+            <h2 class="category-title">Core Security Infrastructure</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SIEM</div>
+                    <div class="tool-name">Security Information and Event Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SOAR</div>
+                    <div class="tool-name">Security Orchestration, Automation, and Response</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SOC</div>
+                    <div class="tool-name">Security Operations Center</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SOAR+</div>
+                    <div class="tool-name">Advanced Security Orchestration with AI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Identity and Access Management -->
+        <div class="category">
+            <h2 class="category-title">Identity and Access Management</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">IAM</div>
+                    <div class="tool-name">Identity and Access Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">PAM</div>
+                    <div class="tool-name">Privileged Access Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MFA</div>
+                    <div class="tool-name">Multi-Factor Authentication</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SSO</div>
+                    <div class="tool-name">Single Sign-On</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Security -->
+        <div class="category">
+            <h2 class="category-title">Network Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">NGFW</div>
+                    <div class="tool-name">Next-Generation Firewall</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">WAF</div>
+                    <div class="tool-name">Web Application Firewall</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">NAC</div>
+                    <div class="tool-name">Network Access Control</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">IDS/IPS</div>
+                    <div class="tool-name">Intrusion Detection/Prevention System</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cloud Security -->
+        <div class="category">
+            <h2 class="category-title">Cloud Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">CNAPP</div>
+                    <div class="tool-name">Cloud Native Application Protection Platform</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">CSPM</div>
+                    <div class="tool-name">Cloud Security Posture Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">CWPP</div>
+                    <div class="tool-name">Cloud Workload Protection Platform</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">CASB</div>
+                    <div class="tool-name">Cloud Access Security Broker</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Protection -->
+        <div class="category">
+            <h2 class="category-title">Data Protection</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">DLP</div>
+                    <div class="tool-name">Data Loss Prevention</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">DSPM</div>
+                    <div class="tool-name">Data Security Posture Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">HSM</div>
+                    <div class="tool-name">Hardware Security Module</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">KMS</div>
+                    <div class="tool-name">Key Management System</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Endpoint Security -->
+        <div class="category">
+            <h2 class="category-title">Endpoint Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">EDR</div>
+                    <div class="tool-name">Endpoint Detection and Response</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">XDR</div>
+                    <div class="tool-name">Extended Detection and Response</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MDM</div>
+                    <div class="tool-name">Mobile Device Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">UEM</div>
+                    <div class="tool-name">Unified Endpoint Management</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Threat Intelligence and Detection -->
+        <div class="category">
+            <h2 class="category-title">Threat Intelligence and Detection</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">TIP</div>
+                    <div class="tool-name">Threat Intelligence Platform</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">UEBA</div>
+                    <div class="tool-name">User and Entity Behavior Analytics</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">NDR</div>
+                    <div class="tool-name">Network Detection and Response</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MTH</div>
+                    <div class="tool-name">Managed Threat Hunting Services</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vulnerability Management -->
+        <div class="category">
+            <h2 class="category-title">Vulnerability Management</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">VM</div>
+                    <div class="tool-name">Vulnerability Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">DAST</div>
+                    <div class="tool-name">Dynamic Application Security Testing</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SAST</div>
+                    <div class="tool-name">Static Application Security Testing</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">IAST</div>
+                    <div class="tool-name">Interactive Application Security Testing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backup and Recovery -->
+        <div class="category">
+            <h2 class="category-title">Backup and Recovery</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">BaaS</div>
+                    <div class="tool-name">Backup as a Service</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">DRaaS</div>
+                    <div class="tool-name">Disaster Recovery as a Service</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compliance and Risk Management -->
+        <div class="category">
+            <h2 class="category-title">Compliance and Risk Management</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">GRC</div>
+                    <div class="tool-name">Governance, Risk, and Compliance</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">TPRM</div>
+                    <div class="tool-name">Third-Party Risk Management</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email and Communication Security -->
+        <div class="category">
+            <h2 class="category-title">Email and Communication Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SEG</div>
+                    <div class="tool-name">Secure Email Gateway</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">DMARC</div>
+                    <div class="tool-name">Domain-based Message Authentication</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specialized Financial Security -->
+        <div class="category">
+            <h2 class="category-title">Specialized Financial Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">AML</div>
+                    <div class="tool-name">Anti-Money Laundering</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">FDS</div>
+                    <div class="tool-name">Fraud Detection Systems</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">TXM</div>
+                    <div class="tool-name">Transaction Monitoring</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SSPM -->
+        <div class="category">
+            <h2 class="category-title">SaaS Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SSPM</div>
+                    <div class="tool-name">SaaS Security Posture Management</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incident Response and Crisis Management -->
+        <div class="category">
+            <h2 class="category-title">Incident Response and Crisis Management</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">IRM</div>
+                    <div class="tool-name">Incident Response Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">CSIRT</div>
+                    <div class="tool-name">Computer Security Incident Response Team</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">DFIR</div>
+                    <div class="tool-name">Digital Forensics and Incident Response</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">CCM</div>
+                    <div class="tool-name">Crisis Communication Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">BCM</div>
+                    <div class="tool-name">Business Continuity Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">ENS</div>
+                    <div class="tool-name">Emergency Notification Systems</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Application Security -->
+        <div class="category">
+            <h2 class="category-title">Mobile Application Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MAST</div>
+                    <div class="tool-name">Mobile Application Security Testing</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MASA</div>
+                    <div class="tool-name">Mobile Application Security Assessment</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MAM</div>
+                    <div class="tool-name">Mobile Application Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MTD</div>
+                    <div class="tool-name">Mobile Threat Defense</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">RASP</div>
+                    <div class="tool-name">Runtime Application Self-Protection</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IT Operations -->
+        <div class="category">
+            <h2 class="category-title">IT Operations and Management</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">ITAM</div>
+                    <div class="tool-name">IT Asset Discovery and Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">ITHM</div>
+                    <div class="tool-name">IT Hygiene and Patch Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">FIM</div>
+                    <div class="tool-name">File Integrity Monitoring</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI and Machine Learning Security -->
+        <div class="category">
+            <h2 class="category-title">AI and Machine Learning Security</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">AI-SPM</div>
+                    <div class="tool-name">AI Security Posture Management</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">GenAI-S</div>
+                    <div class="tool-name">Generative AI Security</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Threat Analysis -->
+        <div class="category">
+            <h2 class="category-title">Advanced Threat Analysis</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">MAS</div>
+                    <div class="tool-name">Malware Analysis and Sandboxing</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">AIA</div>
+                    <div class="tool-name">Adversary Intelligence and Attribution</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next-Generation Analytics -->
+        <div class="category">
+            <h2 class="category-title">Next-Generation Analytics</h2>
+            <div class="tools-grid">
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">AI-SIEM</div>
+                    <div class="tool-name">AI-Native SIEM with Advanced Analytics</div>
+                </div>
+                <div class="tool-stencil" onclick="selectTool(this)">
+                    <input type="color" class="color-picker" onchange="changeToolColor(this)" value="#ecf0f1">
+                    <div class="tool-acronym">SDLA</div>
+                    <div class="tool-name">Security Data Lake and Analytics</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-legend">
+            <h3 style="grid-column: 1 / -1; margin-bottom: 15px; color: #2c3e50;">Team Color Legend Examples:</h3>
+            <div class="team-item">
+                <div class="team-color" style="background: #e74c3c;"></div>
+                <span><strong>Red Team:</strong> Security Operations (SOC, SIEM, SOAR)</span>
+            </div>
+            <div class="team-item">
+                <div class="team-color" style="background: #3498db;"></div>
+                <span><strong>Blue Team:</strong> Infrastructure Security (Network, Cloud)</span>
+            </div>
+            <div class="team-item">
+                <div class="team-color" style="background: #2ecc71;"></div>
+                <span><strong>Green Team:</strong> Identity & Access Management</span>
+            </div>
+            <div class="team-item">
+                <div class="team-color" style="background: #f39c12;"></div>
+                <span><strong>Orange Team:</strong> Application Security (SAST, DAST, Mobile)</span>
+            </div>
+            <div class="team-item">
+                <div class="team-color" style="background: #9b59b6;"></div>
+                <span><strong>Purple Team:</strong> Threat Intelligence & Hunting</span>
+            </div>
+            <div class="team-item">
+                <div class="team-color" style="background: #1abc9c;"></div>
+                <span><strong>Teal Team:</strong> Data Protection & Compliance</span>
+            </div>
+            <div class="team-item">
+                <div class="team-color" style="background: #34495e;"></div>
+                <span><strong>Dark Team:</strong> Incident Response & Crisis Management</span>
+            </div>
+            <div class="team-item">
+                <div class="team-color" style="background: #95a5a6;"></div>
+                <span><strong>Gray Team:</strong> IT Operations & Asset Management</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedColor = '#3498db';
+        let selectedTool = null;
+
+        function setSelectedColor(color) {
+            selectedColor = color;
+            if (selectedTool) {
+                changeToolColorDirect(selectedTool, color);
+            }
+        }
+
+        function selectTool(tool) {
+            selectedTool = tool;
+            // Remove previous selection
+            document.querySelectorAll('.tool-stencil').forEach(t => t.style.outline = 'none');
+            // Add selection outline
+            tool.style.outline = '3px solid #e74c3c';
+        }
+
+        function changeToolColor(input) {
+            const tool = input.closest('.tool-stencil');
+            const color = input.value;
+            changeToolColorDirect(tool, color);
+        }
+
+        function changeToolColorDirect(tool, color) {
+            tool.style.background = `linear-gradient(135deg, ${color}, ${adjustBrightness(color, -20)})`;
+            tool.querySelector('.color-picker').value = color;
+        }
+
+        function adjustBrightness(hex, percent) {
+            const num = parseInt(hex.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+                (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+                (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+        }
+
+        function resetAllColors() {
+            document.querySelectorAll('.tool-stencil').forEach(tool => {
+                tool.style.background = 'linear-gradient(135deg, #ecf0f1, #bdc3c7)';
+                tool.querySelector('.color-picker').value = '#ecf0f1';
+                tool.style.outline = 'none';
+            });
+        }
+
+        function exportConfiguration() {
+            const config = {};
+            document.querySelectorAll('.tool-stencil').forEach(tool => {
+                const acronym = tool.querySelector('.tool-acronym').textContent;
+                const color = tool.querySelector('.color-picker').value;
+                config[acronym] = color;
+            });
+            
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "security_tools_configuration.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
+
+        // Allow clicking on preset colors to apply to selected tool
+        document.querySelectorAll('.preset-color').forEach(color => {
+            color.addEventListener('click', function() {
+                if (selectedTool) {
+                    const colorValue = this.style.backgroundColor;
+                    // Convert RGB to HEX
+                    const rgb = colorValue.match(/\d+/g);
+                    const hex = "#" + ((1 << 24) + (parseInt(rgb[0]) << 16) + (parseInt(rgb[1]) << 8) + parseInt(rgb[2])).toString(16).slice(1);
+                    changeToolColorDirect(selectedTool, hex);
+                }
+            });
+        });
+
+        // Click outside to deselect
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.tool-stencil') && !e.target.closest('.preset-color')) {
+                selectedTool = null;
+                document.querySelectorAll('.tool-stencil').forEach(t => t.style.outline = 'none');
+            }
+        });
+    </script>
+</body>
+</html>
